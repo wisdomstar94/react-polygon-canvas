@@ -6,14 +6,15 @@
 # test 영상
 1. /test/basic 
 
+<br />
+
 <video 
-  src="./test-videos/test-basic.mov" 
+  src="https://github.com/wisdomstar94/react-polygon-canvas/assets/93423564/d5aede5d-5c8b-41fd-a0f0-c99571ee121e" 
   style="width: 100%; height: auto;"
   autoplay
   loop
   muted
-  playsinline>
-</video>
+  playsinline></video>
 
 <br />
 

@@ -3,6 +3,19 @@
 
 <br />
 
+# test 영상
+1. /test/basic 
+<video 
+  src="./test-videos/test-basic.mov" 
+  style="width: 100%; height: auto;"
+  autoplay
+  loop
+  muted
+  playsinline>
+</video>
+
+<br />
+
 # test
 각 기능들 별로 별도의 테스트 페이지를 만들어 두었습니다. 
 1. 본 프로젝트를 clone 받습니다.

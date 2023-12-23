@@ -12,5 +12,9 @@ export declare namespace IUseCanvasCalculator {
 
   export interface Props {
     canvasRef: RefObject<HTMLCanvasElement>;
+    onCanvasMouseDown?: () => void;
+    onCanvasMouseMove?: () => void;
+    onCanvasMouseUp?: () => void;
+    onCanvasClick?: () => void;
   } 
 }

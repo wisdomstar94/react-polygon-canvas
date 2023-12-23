@@ -5,6 +5,10 @@ import { getCanvasBoundingClientRect } from "@/functions/common/common.function"
 
 export function useCanvasCalculator(props: IUseCanvasCalculator.Props) {
   const canvasRef = props.canvasRef;
+  const onCanvasMouseDown = props.onCanvasMouseDown;
+  const onCanvasMouseMove = props.onCanvasMouseMove;
+  const onCanvasMouseUp = props.onCanvasMouseUp;
+  const onCanvasClick = props.onCanvasClick;
 
   const [isPressing, setIsPressing] = useState(false);
   const [mouseUpInfo, setMouseUpInfo] = useState<IUseCanvasCalculator.MouseUpInfo>();
@@ -34,6 +38,11 @@ export function useCanvasCalculator(props: IUseCanvasCalculator.Props) {
     },
   });
 
+  useEffect(() => {
+    if (typeof onCanvasClick === 'function') onCanvasClick();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouseClickedCanvasCoordinate]);
+
   useAddEventListener({
     domEventRequiredInfo: {
       target: canvasRef,
@@ -53,6 +62,11 @@ export function useCanvasCalculator(props: IUseCanvasCalculator.Props) {
       },
     },
   });
+
+  useEffect(() => {
+    if (typeof onCanvasMouseDown === 'function') onCanvasMouseDown();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouseDownedCanvasCoordinate]);
 
   useAddEventListener({
     windowEventRequiredInfo: {
@@ -78,6 +92,12 @@ export function useCanvasCalculator(props: IUseCanvasCalculator.Props) {
     },
   });
 
+  useEffect(() => {
+    if (!isPressing) return;
+    if (typeof onCanvasMouseMove === 'function') onCanvasMouseMove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPressing, dx, dy]);
+
   useAddEventListener({
     windowEventRequiredInfo: {
       eventName: `mouseup`,
@@ -89,6 +109,12 @@ export function useCanvasCalculator(props: IUseCanvasCalculator.Props) {
       },
     },
   });
+
+  useEffect(() => {
+    if (mouseUpInfo === undefined) return;
+    if (typeof onCanvasMouseUp === 'function') onCanvasMouseUp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouseUpInfo]);
 
   return {
     isPressing,

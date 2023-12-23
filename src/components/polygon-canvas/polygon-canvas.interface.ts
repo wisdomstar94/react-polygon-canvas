@@ -4,6 +4,13 @@ export declare namespace IPolygonCanvas {
     y: number;
   }
 
+  export type CanvasSelectInfoType = 'point' | 'polygon' | '';
+
+  export interface CanvasSelectInfo {
+    type: CanvasSelectInfoType;
+    index?: number;
+  }
+
   export interface Props {
     className?: string;
 
